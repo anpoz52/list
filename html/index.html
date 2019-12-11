@@ -1,0 +1,274 @@
+
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PoCkit</title>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+<link rel="stylesheet" href="css/reset.css" type="text/css">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body id="index_c">
+    <!--
+    <div id="loader">
+        <img src="images/loadinganimation.gif" id="load_img">
+    </div>
+    -->
+    <div class="bg-color button toggle-menu"></div>
+
+    <header>
+  <div class="header_inner flex justify-sp align-ce">
+    <p><a href="http://192.168.33.10/monitor"><img src="images/logo.png"></a></p>
+    <p class="button toggle-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</header>
+    <div class="wrapper">
+        <div class="tab_content" style="display:none;">
+            <ul class="tab_content_ul">
+                <li class="tab_content_ul_li tab_content_ul_li-active" data-deviceId="msgw00000"><span>東京</span></li>
+                <li class="tab_content_ul_li" data-deviceId="msgw00001"><span>大阪</span></li>
+                <li class="tab_content_ul_li" data-deviceId="msgw00002"><span>福岡</span></li>
+            </ul>
+        </div>
+        <div class="flex contentbox-1">
+            <div>
+                <img id="photo" src="images/dummy.jpg" width="100%">
+            </div>
+            <div class="data-01">
+                                    <dl>
+                        表示中のゲートウェイ：
+                        <select class="deviceSelector">
+                                                            <option value="msgw99998">msgw99998</option>
+                                                            <option value="msgw99999">msgw99999</option>
+                                                    </select>
+                    </dl>
+                                                                        <dl>
+                        <dt class="flex align-ce justify-sp"><p>温度</p><img class="temp-exclamation"></dt>
+                                                <dd >
+                                                                                            <div>
+                                    <div class="flex align-ba justify-sp temperature1-err">
+                                        <p><span class="font-16 bold">親機</span></p>
+                                        <p><span class="font-22 bold temperature1-now"> - </span>℃</p>
+                                    </div>
+                                    <p><span class="red">最高</span> : <span class="bold temperature1-max"> - </span>℃</p>
+                                    <p><span class="blue">最低</span> : <span class="bold temperature1-min"> - </span>℃</p>
+                                    <p>平均 : <span class="bold temperature1-ave"> - </span>℃</p>
+                                </div>
+                                                                                    </dd>
+                    </dl>
+                                                        <dl>
+                        <dt class="flex align-ce justify-sp"><p>湿度</p><img class="temp-exclamation"></dt>
+                                                <dd >
+                                                                                            <div>
+                                    <div class="flex align-ba justify-sp humidity1-err">
+                                        <p><span class="font-16 bold">親機</span></p>
+                                        <p><span class="font-22 bold humidity1-now"> - </span>%</p>
+                                    </div>
+                                    <p><span class="red">最高</span> : <span class="bold humidity1-max"> - </span>%</p>
+                                    <p><span class="blue">最低</span> : <span class="bold humidity1-min"> - </span>%</p>
+                                    <p>平均 : <span class="bold humidity1-ave"> - </span>%</p>
+                                </div>
+                                                                                    </dd>
+                    </dl>
+                                                        <dl>
+                        <dt class="flex align-ce justify-sp"><p>騒音</p><img class="temp-exclamation"></dt>
+                                                <dd >
+                                                                                            <div>
+                                    <div class="flex align-ba justify-sp noise-err">
+                                        <p><span class="font-16 bold">親機</span></p>
+                                        <p><span class="font-22 bold noise-now"> - </span>dB</p>
+                                    </div>
+                                    <p><span class="red">最高</span> : <span class="bold noise-max"> - </span>dB</p>
+                                    <p><span class="blue">最低</span> : <span class="bold noise-min"> - </span>dB</p>
+                                    <p>平均 : <span class="bold noise-ave"> - </span>dB</p>
+                                </div>
+                                                                                    </dd>
+                    </dl>
+                                                        <dl>
+                        <dt class="flex align-ce justify-sp"><p>日射量</p><img class="temp-exclamation"></dt>
+                                                <dd >
+                                                                                            <div>
+                                    <div class="flex align-ba justify-sp sunlight2-err">
+                                        <p><span class="font-16 bold">親機</span></p>
+                                        <p><span class="font-22 bold sunlight2-now"> - </span>W/m²</p>
+                                    </div>
+                                    <p><span class="red">最高</span> : <span class="bold sunlight2-max"> - </span>W/m²</p>
+                                    <p><span class="blue">最低</span> : <span class="bold sunlight2-min"> - </span>W/m²</p>
+                                    <p>平均 : <span class="bold sunlight2-ave"> - </span>W/m²</p>
+                                </div>
+                                                                                    </dd>
+                    </dl>
+                                                        <dl>
+                        <dt class="flex align-ce justify-sp"><p>土壌水分</p><img class="temp-exclamation"></dt>
+                                                <dd >
+                                                                                            <div>
+                                    <div class="flex align-ba justify-sp soil_moisture3-err">
+                                        <p><span class="font-16 bold">親機</span></p>
+                                        <p><span class="font-22 bold soil_moisture3-now"> - </span>%</p>
+                                    </div>
+                                    <p><span class="red">最高</span> : <span class="bold soil_moisture3-max"> - </span>%</p>
+                                    <p><span class="blue">最低</span> : <span class="bold soil_moisture3-min"> - </span>%</p>
+                                    <p>平均 : <span class="bold soil_moisture3-ave"> - </span>%</p>
+                                </div>
+                                                                                    </dd>
+                    </dl>
+                                <p class="flex align-ce justify-sp"><span class="font-11 gray">測定日時：<span class="sampling-time"> - </span></span><img id="btn_photo_off" src="images/icon_btn_off.png"></p>
+            </div>
+        </div>
+
+        <div class="contentbox-2">
+            <div class="flex data-02 justify-sp">
+                                    <dl>
+                        <select class="deviceSelector no-pic">
+                                                            <option value="msgw99998">msgw99998</option>
+                                                            <option value="msgw99999">msgw99999</option>
+                                                    </select>
+                    </dl>
+                                                                        <dl>
+                        <dt class="flex align-ce justify-sp"><p>温度</p><img class="temp-exclamation"></dt>
+                        <dd>
+                                                                                            <div class="mb20">
+                                    <div class="flex align-ba justify-sp temperature1-err">
+                                        <p><span class="font-16 bold">親機</span></p>
+                                        <p><span class="font-22 bold temperature1-now"> - </span>℃</p>
+                                    </div>
+                                    <p><span class="red">最高</span> : <span class="bold temperature1-max"> - </span>℃</p>
+                                    <p><span class="blue">最低</span> : <span class="bold temperature1-min"> - </span>℃</p>
+                                    <p>平均 : <span class="bold temperature1-ave"> - </span>℃</p>
+                                </div>
+                                                                                    </dd>
+                    </dl>
+                                                        <dl>
+                        <dt class="flex align-ce justify-sp"><p>湿度</p><img class="temp-exclamation"></dt>
+                        <dd>
+                                                                                            <div class="mb20">
+                                    <div class="flex align-ba justify-sp humidity1-err">
+                                        <p><span class="font-16 bold">親機</span></p>
+                                        <p><span class="font-22 bold humidity1-now"> - </span>%</p>
+                                    </div>
+                                    <p><span class="red">最高</span> : <span class="bold humidity1-max"> - </span>%</p>
+                                    <p><span class="blue">最低</span> : <span class="bold humidity1-min"> - </span>%</p>
+                                    <p>平均 : <span class="bold humidity1-ave"> - </span>%</p>
+                                </div>
+                                                                                    </dd>
+                    </dl>
+                                                        <dl>
+                        <dt class="flex align-ce justify-sp"><p>騒音</p><img class="temp-exclamation"></dt>
+                        <dd>
+                                                                                            <div class="mb20">
+                                    <div class="flex align-ba justify-sp noise-err">
+                                        <p><span class="font-16 bold">親機</span></p>
+                                        <p><span class="font-22 bold noise-now"> - </span>dB</p>
+                                    </div>
+                                    <p><span class="red">最高</span> : <span class="bold noise-max"> - </span>dB</p>
+                                    <p><span class="blue">最低</span> : <span class="bold noise-min"> - </span>dB</p>
+                                    <p>平均 : <span class="bold noise-ave"> - </span>dB</p>
+                                </div>
+                                                                                    </dd>
+                    </dl>
+                                                        <dl>
+                        <dt class="flex align-ce justify-sp"><p>日射量</p><img class="temp-exclamation"></dt>
+                        <dd>
+                                                                                            <div class="mb20">
+                                    <div class="flex align-ba justify-sp sunlight2-err">
+                                        <p><span class="font-16 bold">親機</span></p>
+                                        <p><span class="font-22 bold sunlight2-now"> - </span>W/m²</p>
+                                    </div>
+                                    <p><span class="red">最高</span> : <span class="bold sunlight2-max"> - </span>W/m²</p>
+                                    <p><span class="blue">最低</span> : <span class="bold sunlight2-min"> - </span>W/m²</p>
+                                    <p>平均 : <span class="bold sunlight2-ave"> - </span>W/m²</p>
+                                </div>
+                                                                                    </dd>
+                    </dl>
+                                                        <dl>
+                        <dt class="flex align-ce justify-sp"><p>土壌水分</p><img class="temp-exclamation"></dt>
+                        <dd>
+                                                                                            <div class="mb20">
+                                    <div class="flex align-ba justify-sp soil_moisture3-err">
+                                        <p><span class="font-16 bold">親機</span></p>
+                                        <p><span class="font-22 bold soil_moisture3-now"> - </span>%</p>
+                                    </div>
+                                    <p><span class="red">最高</span> : <span class="bold soil_moisture3-max"> - </span>%</p>
+                                    <p><span class="blue">最低</span> : <span class="bold soil_moisture3-min"> - </span>%</p>
+                                    <p>平均 : <span class="bold soil_moisture3-ave"> - </span>%</p>
+                                </div>
+                                                                                    </dd>
+                    </dl>
+                            </div>
+            <p class="flex align-ce justify-en"><span class="font-11 gray">測定日時：<span class="sampling-time"> - </span></span><img id="btn_photo_on" src="images/icon_btn_on.png"></p>
+        </div>
+
+        <div class="contentbox-3">
+            <div class="inner">
+                <div class="flex align-ce tab_box" id="rangeType">描写範囲<p class="flex align-ce justify-ce on">24h</p><p class="flex align-ce justify-ce">1h</p></div>
+                <div class="data-box">
+                    <div class="flex-wr">
+                        <div class="flex justify-ce">
+                            <div><canvas id="temperatureChart24h"></canvas></div>
+                            <div><canvas id="humidityChart24h"></canvas></div>
+                        </div>
+                        <div class="flex justify-ce">
+                            <div><canvas id="noiseChart24h"></canvas></div>
+                            <div><canvas id="accelerationChart24h"></canvas></div>
+                        </div>
+                        <div class="flex justify-ce">
+                            <div><canvas id="sunlightChart24h"></canvas></div>
+                            <div><canvas id="soil_moistureChart24h"></canvas></div>
+                        </div>
+                    </div>
+                    <div class="flex-wr hide">
+                        <div class="flex justify-ce">
+                            <div><canvas id="temperatureChart1h"></canvas></div>
+                            <div><canvas id="humidityChart1h"></canvas></div>
+                        </div>
+                        <div class="flex justify-ce">
+                            <div><canvas id="noiseChart1h"></canvas></div>
+                            <div><canvas id="accelerationChart1h"></canvas></div>
+                        </div>
+                        <div class="flex justify-ce">
+                            <div><canvas id="sunlightChart1h"></canvas></div>
+                            <div><canvas id="soil_moistureChart1h"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <nav id="slide_menu">
+  <div class="flex align-ce justify-ce">
+    <p>MENU</p>
+    <img src="images/close.png" class="button toggle-menu">
+  </div>
+  <ul>
+            <li><a href="/monitor" class="flex align-ce justify-ce">リアルタイムモニタリング</a></li>
+            <li><a href="/analysis" class="flex align-ce justify-ce">データ分析</a></li>
+            <li><a href="/alertsetting" class="flex align-ce justify-ce">警報設定</a></li>
+            <li><a href="/pwsetting" class="flex align-ce justify-ce">パスワード設定</a></li>
+            <li><a href="/wifiqr" class="flex align-ce justify-ce">Wi-Fi設定QRコード生成</a></li>
+            <li><a href="http://192.168.33.10/pairing" class="flex align-ce justify-ce">デバイス操作</a></li>
+            <li><a href="/logout" class="flex align-ce justify-ce">ログアウト</a></li>
+      </ul>
+</nav>
+    <input type="hidden" name="_token" value="ilfrb6z85jahKAKPwk1BvRrQBQ2RAFFPM8p3Gayc">
+    </div>
+    <footer>
+        <p>COPYRIGHT © SERAKU CO, LTD.</p>
+    </footer>
+    <script type="text/javascript">
+var userInfo = {"mailAddress":"magari@seraku.co.jp","deviceId":"msgw99998","userId":"s15681898539940894719","deviceData":[{"RowKey":"msgw99998","DeviceName":null,"IoTHubKey":"MecDh0G6vi0PQd5ugWRieE3bnKtonU+lVMlgQJqfl5M="},{"RowKey":"msgw99999","DeviceName":null,"IoTHubKey":"2mcIJ0wREENaigfExljN0uXru4LQp4qBtD0XxhCS75Y="}],"orgId":"base","sensorData":{"msgw99998":[{"RowKey":"humidity1","Color":"{\u0022border\u0022: \u0022rgba(63, 197, 251, 1)\u0022, \u0022bg\u0022:\u0022rgba(63, 197, 251, 0.4)\u0022}","DisplayName":"\u6e7f\u5ea6","DisplayOrder":"2","Unit":"%"},{"RowKey":"noise","Color":"{\u0022border\u0022: \u0022rgba(227, 122, 195, 1)\u0022, \u0022bg\u0022:\u0022rgba(227, 122, 195, 0.4)\u0022}","DisplayName":"\u9a12\u97f3","DisplayOrder":"5","Unit":"dB"},{"RowKey":"soil_moisture3","Color":"{\u0022border\u0022: \u0022rgba(51, 255, 51, 1)\u0022, \u0022bg\u0022:\u0022rgba(51, 255, 51, 0.4)\u0022}","DisplayName":"\u571f\u58cc\u6c34\u5206","DisplayOrder":"7","Unit":"%"},{"RowKey":"sunlight2","Color":"{\u0022border\u0022: \u0022rgba(255, 153, 0, 1)\u0022, \u0022bg\u0022:\u0022rgba(255, 153, 0, 0.4)\u0022}","DisplayName":"\u65e5\u5c04\u91cf","DisplayOrder":"6","Unit":"W\/m\u00b2"},{"RowKey":"temperature1","Color":"{\u0022border\u0022: \u0022rgba(233, 113, 108, 1)\u0022, \u0022bg\u0022:\u0022rgba(233, 113, 108, 0.4)\u0022}","DisplayName":"\u6e29\u5ea6","DisplayOrder":"1","Unit":"\u2103"}],"msgw99999":[{"RowKey":"humidity1","Color":"{\u0022border\u0022: \u0022rgba(63, 197, 251, 1)\u0022, \u0022bg\u0022:\u0022rgba(63, 197, 251, 0.4)\u0022}","DisplayName":"\u6e7f\u5ea6","DisplayOrder":"2","Unit":"%"},{"RowKey":"noise","Color":"{\u0022border\u0022: \u0022rgba(227, 122, 195, 1)\u0022, \u0022bg\u0022:\u0022rgba(227, 122, 195, 0.4)\u0022}","DisplayName":"\u9a12\u97f3","DisplayOrder":"5","Unit":"dB"},{"RowKey":"soil_moisture3","Color":"{\u0022border\u0022: \u0022rgba(51, 255, 51, 1)\u0022, \u0022bg\u0022:\u0022rgba(51, 255, 51, 0.4)\u0022}","DisplayName":"\u571f\u58cc\u6c34\u5206","DisplayOrder":"7","Unit":"%"},{"RowKey":"sunlight2","Color":"{\u0022border\u0022: \u0022rgba(255, 153, 0, 1)\u0022, \u0022bg\u0022:\u0022rgba(255, 153, 0, 0.4)\u0022}","DisplayName":"\u65e5\u5c04\u91cf","DisplayOrder":"6","Unit":"W\/m\u00b2"},{"RowKey":"temperature1","Color":"{\u0022border\u0022: \u0022rgba(233, 113, 108, 1)\u0022, \u0022bg\u0022:\u0022rgba(233, 113, 108, 0.4)\u0022}","DisplayName":"\u6e29\u5ea6","DisplayOrder":"1","Unit":"\u2103"}]},"graphSettings":"[]"};
+</script>    <script src="js/moment.min.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+        var chartProperty = {"humidity":{"humidity1":{"displayName":"\u6e7f\u5ea6","unit":"%","color":{"border":"rgba(63, 197, 251, 1)","bg":"rgba(63, 197, 251, 0.4)"}},"caption":"\u6e7f\u5ea6"},"noise":{"noise":{"displayName":"\u9a12\u97f3","unit":"dB","color":{"border":"rgba(227, 122, 195, 1)","bg":"rgba(227, 122, 195, 0.4)"}},"caption":"\u9a12\u97f3"},"soil_moisture":{"soil_moisture3":{"displayName":"\u571f\u58cc\u6c34\u5206","unit":"%","color":{"border":"rgba(51, 255, 51, 1)","bg":"rgba(51, 255, 51, 0.4)"}},"caption":"\u571f\u58cc\u6c34\u5206"},"sunlight":{"sunlight2":{"displayName":"\u65e5\u5c04\u91cf","unit":"W\/m\u00b2","color":{"border":"rgba(255, 153, 0, 1)","bg":"rgba(255, 153, 0, 0.4)"}},"caption":"\u65e5\u5c04\u91cf"},"temperature":{"temperature1":{"displayName":"\u6e29\u5ea6","unit":"\u2103","color":{"border":"rgba(233, 113, 108, 1)","bg":"rgba(233, 113, 108, 0.4)"}},"caption":"\u6e29\u5ea6"}};
+    </script>
+</body>
+</html>
